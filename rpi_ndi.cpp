@@ -36,9 +36,9 @@
 bool get_framebuffer(int& out_framebuffer_fd, char*& out_framebuffer, int& out_fb_size, fb_var_screeninfo& out_screeninfo)
 {
 	out_framebuffer_fd = open("/dev/fb0", O_RDWR);
-	if ( out_framebuffer_fd <= 0)
+	if ( out_framebuffer_fd < 0)
 	{
-		printf("Could not open framebuffer!?\n");
+		printf("Could not open framebuffer!? (got: %d)\n", out_framebuffer_fd);
 		return false;
 	}
 
